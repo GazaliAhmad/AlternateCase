@@ -7,8 +7,9 @@ public class textManipulation {
 		var s1 = "abcdeEEgGGG";
 		var s2 = "aaabbbBBBcd";
 		var s3 = "aBBcDeFgBB";
-		var s4 = "abcd";
+		var s4 = "cba";
 		var s5 = "thequickbrownfoxjumpsoverthelazydog";
+		var s6  ="aaabaaa";
 		
 		alternateCase(s1);
 		countSameLetters(s2);
@@ -16,6 +17,7 @@ public class textManipulation {
 		countSameLetters(s4);
 		alternateCase(s5);
 		countSameLetters(s5);
+		countSameLetters(s6);
 	}
 	
 	static void alternateCase(@NotNull String text) {
@@ -31,18 +33,18 @@ public class textManipulation {
 	
 	static void countSameLetters(@NotNull String text) {
 		StringBuilder result = new StringBuilder();
-		var sortedText= text.chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
+		//var sortedText= text.chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
 		var i = 0;
 		while (i < text.length()) {
 			var counter = 1;
-			while (i < sortedText.length() - 1 && sortedText.charAt(i) == sortedText.charAt(i + 1)) {
+			while (i < text.length() - 1 && text.charAt(i) == text.charAt(i + 1)) {
 				counter++;
 				i++;
 			}
-			if (counter == 1) result.append(sortedText.charAt(i));
-			else result.append(sortedText.charAt(i)).append(counter);
+			if (counter == 1) result.append(text.charAt(i));
+			else result.append(text.charAt(i)).append(counter);
 			i++;
 		}
-		out.println("\nCount each letter occurrences: " + text + " : " + result);
+		out.println("\nCount each letter by sequence occurrences: " + text + " : " + result);
 	}
 }
