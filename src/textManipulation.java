@@ -20,7 +20,7 @@ public class textManipulation {
 	
 	static void alternateCase(@NotNull String text) {
 		StringBuilder result = new StringBuilder();
-		int i = 0;
+		var i = 0;
 		while (i < text.length()) {
 			if (i % 2 == 0) result.append(Character.toUpperCase(text.charAt(i)));
 			else result.append(Character.toLowerCase(text.charAt(i)));
@@ -31,10 +31,10 @@ public class textManipulation {
 	
 	static void countSameLetters(@NotNull String text) {
 		StringBuilder result = new StringBuilder();
-		var sortedText= text.chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
-		int i = 0;
+		var sortedText= text.chars().sorted().collect(() -> new StringBuilder(), StringBuilder::appendCodePoint, StringBuilder::append).toString();
+		var i = 0;
 		while (i < text.length()) {
-			int counter = 1;
+			var counter = 1;
 			while (i < sortedText.length() - 1 && sortedText.charAt(i) == sortedText.charAt(i + 1)) {
 				counter++;
 				i++;
