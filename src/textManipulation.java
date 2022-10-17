@@ -31,7 +31,7 @@ public class textManipulation {
 	
 	static void countSameLetters(@NotNull String text) {
 		StringBuilder result = new StringBuilder();
-		var sortedText= text.chars().sorted().collect(() -> new StringBuilder(), StringBuilder::appendCodePoint, StringBuilder::append).toString();
+		var sortedText= text.chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
 		var i = 0;
 		while (i < text.length()) {
 			var counter = 1;
